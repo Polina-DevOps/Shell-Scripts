@@ -1,0 +1,1 @@
+This is initial sample file to test GIT push
