@@ -2,6 +2,8 @@
 ##Script to deploy catalogue server
 
 echo "Installing nodejfs and GCC compiler"
+hostnamectl set-hostname catalogue
+hostnamectl
 
 sudo yum install nodejs make gcc-c++ -y >/dev/null
 if [ $? = 0 ]; then
