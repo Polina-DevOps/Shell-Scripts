@@ -27,7 +27,7 @@ fi
 
 echo "Adding Mongo DB URL to catalogue configuration file"
 
-sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/g' /home/roboshop/catalogue/systemd.service
+sudo sed -i -e 's/MONGO_DNSNAME/mongodb.roboshop.internal/g' /home/roboshop/catalogue/systemd.service
 if [ $? = 0 ]; then
 then
 	sudo mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service
