@@ -23,3 +23,4 @@ if [ $? = 0 ]; then
   echo "Restarting nginx web server"
   sudo systemctl restart nginx
 fi
+sed -i -e '/catalogue/ s/localhost/catalouge.roboshop.internal/' /etc/nginx/default.d/roboshop.conf && sudo systemctl restart nginx
