@@ -18,11 +18,11 @@ echo "Downloading the installing nodejs depnendencies"
 id roboshop >/dev/null
 if [ $? = 0 ]; then
 	sudo su - roboshop -c 'curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/catalogue/archive/main.zip"'
-	sudo su - roboshop -c 'cd /home/roboshop'
+	cd /home/roboshop
 	sudo su - roboshop -c 'unzip -o /tmp/catalogue.zip'
 	sudo su - roboshop -c 'mv catalogue-main catalogue'
-	sudo su - roboshop -c 'cd /home/roboshop/catalogue'
-	sudo su - roboshop -c 'npm install'
+	cd /home/roboshop/catalogue
+	sudo su - roboshop -c 'npm install /home/roboshop/catalogue'
 fi
 
 echo "Adding Mongo DB URL to catalogue configuration file"
