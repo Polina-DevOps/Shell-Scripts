@@ -7,12 +7,12 @@ sudo hostname
 
 echo "Setting up MongoDB repos."
 
-echo '[mongodb-org-4.2]
-name=MongoDB Repository
-baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.2/x86_64/
-gpgcheck=1
-enabled=1
-gpgkey=https://www.mongodb.org/static/pgp/server-4.2.asc' >/etc/yum.repos.d/mongodb.repo
+sudo echo '[mongodb-org-4.2]
+sudo name=MongoDB Repository
+sudo baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.2/x86_64/
+sudo gpgcheck=1
+sudo enabled=1
+sudo gpgkey=https://www.mongodb.org/static/pgp/server-4.2.asc' >/etc/yum.repos.d/mongodb.repo
 if [ $? = 0 ];then
 	ehco  "Install Mongo DB & Start Service."
 	sudo yum install -y mongodb-org >/dev/null
