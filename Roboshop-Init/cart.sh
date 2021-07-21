@@ -8,7 +8,7 @@ if [ $? = 0 ]; then
    id roboshop >/dev/null
    if [ $? != 0 ]; then
 		  echo "roboshop cart creation"
-		  cartadd roboshop
+		  useradd roboshop
 		  echo "roboshop:roboshop" | chpasswd
 	fi
 fi
