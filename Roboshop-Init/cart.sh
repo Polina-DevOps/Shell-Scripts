@@ -19,7 +19,7 @@ id roboshop >/dev/null
 if [ $? = 0 ]; then
 	  curl -s -L -o /tmp/cart.zip "https://github.com/roboshop-devops-project/cart/archive/main.zip"
 	  if [ $? = 0 ]; then
-		    cd /home/roboshop && unzip -o /tmp/cart.zip && rm -rf cart && mv cart-main cart && cd /home/roboshop/cart && npm install --unsafe-perm=true -g now && chown -R roboshop:roboshop /home/roboshop && chmod 755 /home/roboshop
+		    cd /home/roboshop && unzip -o /tmp/cart.zip && rm -rf cart && mv cart-main cart && cd /home/roboshop/cart && npm install --unsafe-perm && chown -R roboshop:roboshop /home/roboshop && chmod 755 /home/roboshop
 	  fi
 fi
 
@@ -31,4 +31,5 @@ if [ $? = 0 ]; then
 	 systemctl daemon-reload
 	 systemctl start cart
 	 systemctl enable cart
+	 systemctl status cart
 fi
