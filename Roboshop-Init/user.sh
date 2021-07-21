@@ -19,7 +19,7 @@ id roboshop >/dev/null
 if [ $? = 0 ]; then
 	curl -s -L -o /tmp/user.zip "https://github.com/roboshop-devops-project/user/archive/main.zip"
 	if [ $? = 0 ]; then
-		cd /home/roboshop && unzip -o /tmp/user.zip && mv user-main user && cd /home/roboshop/user && npm install --unsafe-perm=true -g now && chown -R roboshop:roboshop /home/roboshop
+		cd /home/roboshop && unzip -o /tmp/user.zip && rm -rf user-main && mv user-main user && cd /home/roboshop/user && npm install --unsafe-perm=true -g now && chown -R roboshop:roboshop /home/roboshop && chmod -R 755 /home/roboshop
 	fi
 fi
 
