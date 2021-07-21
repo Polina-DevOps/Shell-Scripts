@@ -26,7 +26,6 @@ fi
 echo "Adding Mongo DB URL to user configuration file"
 
 if [ $? = 0 ]; then
-then
 	 mv /home/roboshop/user/systemd.service /etc/systemd/system/user.service
 	 systemctl daemon-reload
 	 systemctl start user
