@@ -23,8 +23,9 @@ if [ $? = 0 ]; then
 	fi
 fi
 
-echo "Adding Mongo DB URL to user configuration file"
+echo "REDIS_HOST and MONGO_URL in user service configuration file"
 
+sed -i -e 's/REDIS_ENDPOINT/redis.roboshop.internal/' -e 's/MONGO_ENDPOINT/mongodb.roboshop.internal' /etc/systemd/system/user.service
 if [ $? = 0 ]; then
 	 mv /home/roboshop/user/systemd.service /etc/systemd/system/user.service
 	 systemctl daemon-reload
