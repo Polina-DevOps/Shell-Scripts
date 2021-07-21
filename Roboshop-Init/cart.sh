@@ -25,7 +25,7 @@ fi
 
 echo "REDIS_HOST and MONGO_URL in cart service configuration file"
 
-##sed -i -e 's/REDIS_ENDPOINT/redis.roboshop.internal/' -e 's/MONGO_ENDPOINT/mongodb.roboshop.internal/' /etc/systemd/system/cart.service
+sed -i -e 's/REDIS_ENDPOINT/redis.roboshop.internal/' -e 's/CATALOGUE_ENDPOINT/catalouge.roboshop.internal/' /etc/systemd/system/cart.service
 if [ $? = 0 ]; then
 	 mv /home/roboshop/cart/systemd.service /etc/systemd/system/cart.service
 	 systemctl daemon-reload
