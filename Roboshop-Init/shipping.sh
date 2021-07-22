@@ -26,7 +26,7 @@ fi
 
 echo "CARD and MySQLDB DNS in shipping service configuration file"
 
-sed -i -e 's/CART_ENDPOINT/cart.roboshop.internal/' -e 's/DBHOST/mysql.roboshop.internal/'/home/roboshop/shipping/systemd.service
+sed -i -e 's/CART_ENDPOINT/cart.roboshop.internal/' -e 's/DBHOST/mysql.roboshop.internal/' /home/roboshop/shipping/systemd.service
 if [ $? = 0 ]; then
 	mv /home/roboshop/shipping/systemd.service /etc/systemd/system/shipping.service
 	systemctl daemon-reload && 	systemctl start shipping && systemctl enable shipping && systemctl status shipping >/dev/null
