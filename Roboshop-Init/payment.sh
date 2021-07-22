@@ -16,9 +16,9 @@ echo "Download the repo."
 cd /home/roboshop
 curl -L -s -o /tmp/payment.zip "https://github.com/roboshop-devops-project/payment/archive/main.zip"
 if [ $? = 0 ]; then
-	unzip -o /tmp/payment.zip && mv payment-main payment && cd payment
+	unzip -o /tmp/payment.zip >/dev/null && mv payment-main payment && cd payment
 	echo "Install the dependencies"
-	cd /home/roboshop/payment && pip3 install -r requirements.txt
+	cd /home/roboshop/payment && pip3 install -r requirements.txt >/dev/null
 fi
 
 echo  "Update the roboshop user and group id in payment.ini file."
