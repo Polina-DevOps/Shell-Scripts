@@ -3,7 +3,7 @@
 
 echo "Installing Redis redis"
 
-yum install epel-release yum-utils -y >/dev/null && yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm -y >/dev/null && yum-config-manager --enablerepos=remi >/dev/null && yum install redis -y >/dev/null
+yum install epel-release yum-utils -y >/dev/null && yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm -y >/dev/null && yum install redis -y --enablerepo=remi >/dev/null
 
 echo "Update the BindIP from 127.0.0.1 to 0.0.0.0 in config file /etc/redis.conf & /etc/redis/redis.conf"
 
