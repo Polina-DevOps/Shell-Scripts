@@ -14,7 +14,7 @@ gpgcheck=1
 enabled=1
 gpgkey=https://www.mongodb.org/static/pgp/server-4.2.asc' >/etc/yum.repos.d/mongodb.repo
 if [ $? = 0 ];then
-	ehco  "Install Mongo DB & Start Service."
+	echo  "Install Mongo DB & Start Service."
 	yum install -y mongodb-org >/dev/null
 	if [ $? = 0 ]; then
 		echo "Enabling mongodb default startup"
