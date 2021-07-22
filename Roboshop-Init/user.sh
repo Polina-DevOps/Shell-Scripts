@@ -25,7 +25,7 @@ fi
 
 echo "REDIS_HOST and MONGO_URL in user service configuration file"
 
-sed -i -e 's/REDIS_ENDPOINT/redis.roboshop.internal/' -e 's/MONGO_ENDPOINT/mongodb.roboshop.internal/' /etc/systemd/system/user.service
+sed -i -e 's/REDIS_ENDPOINT/redis.roboshop.internal/' -e 's/MONGO_ENDPOINT/mongodb.roboshop.internal/' /home/roboshop/user/systemd.service
 if [ $? = 0 ]; then
 	 mv /home/roboshop/user/systemd.service /etc/systemd/system/user.service
 	 systemctl daemon-reload
