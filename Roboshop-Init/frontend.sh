@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 ## Script to deploy frontend nginx server.
 
 #Changing hostname
