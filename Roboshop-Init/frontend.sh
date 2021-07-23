@@ -1,18 +1,20 @@
 #!/bin/bash
 ## Script to deploy frontend nginx server.
+[ ! -d /var/tmp ] && mkdir /var/tmp
+chmod 755 /var/tmp
+[ ! -f /var/tmp/roboshop.log ] && touch /var/tmp/roboshop.log
+chmod 755 /var/tmp/roboshop.log
 
+LOG=/var/tmp/roboshop.log
 #Changing hostname
 hostnamectl set-hostname frontend
 hostname
 
 echo "Install nginx server using yum utility"
-yum install nginx -y 1>/tmp/nginxinstallsuccess.out 2>/tmp/nginxinstallfail.out
+yum install nginx -y >>$LOG
 if [ $? = 0 ]; then
   echo "Enabling nginx default startup"
-  systemctl enable nginx
-  echo "Starting nginx default startup"
-  systemctl start nginx >/dev/null
-  systemctl status nginx >/dev/null
+  systemctl enable nginx >>$LOG && systemctl start nginx >>$LOG && systemctl status nginx >>$LOG
 fi
 
 Download the HTDOCS content
