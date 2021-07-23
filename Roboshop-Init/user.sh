@@ -15,7 +15,6 @@ if [ $? = 0 ]; then
    if [ $? != 0 ]; then
 		  echo "roboshop user creation"
 		  useradd roboshop >>$LOG
-		  echo "roboshop:roboshop" | chpasswd
 	fi
 fi
 
