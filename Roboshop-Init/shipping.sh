@@ -32,7 +32,7 @@ fi
 echo "CART and MySQLDB DNS in shipping service configuration file"
 
 cp -pr /home/roboshop/shipping/systemd.service /home/roboshop/shipping/systemd.service_BKP
-sed -i -e 's/CART_ENDPOINT/cart.roboshop.internal/' -e 's/DBHOST/mysql.roboshop.internal/' /home/roboshop/shipping/systemd.service
+sed -i -e 's/CARTENDPOINT/cart.roboshop.internal/' -e 's/DBHOST/mysql.roboshop.internal/' /home/roboshop/shipping/systemd.service
 if [ $? = 0 ]; then
 	mv /home/roboshop/shipping/systemd.service /etc/systemd/system/shipping.service
 	systemctl daemon-reload >/dev/null && systemctl start shipping >/dev/null && systemctl enable shipping >/dev/null && systemctl status shipping >/dev/null
