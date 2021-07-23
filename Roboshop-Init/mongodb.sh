@@ -1,6 +1,13 @@
 #!/bin/bash
 ## Script to create and configure Mongodb in the server
 
+[ ! -d /var/tmp ] && mkdir /var/tmp
+chmod 755 /var/tmp
+[ ! -f /var/tmp/roboshop.log ] && touch /var/tmp/roboshop.log
+chmod 755 /var/tmp/roboshop.log
+
+LOG=/var/tmp/roboshop.log
+
 #Changing hostname
 hostnamectl set-hostname mongodb
 hostname
@@ -15,7 +22,7 @@ enabled=1
 gpgkey=https://www.mongodb.org/static/pgp/server-4.2.asc' >/etc/yum.repos.d/mongodb.repo
 if [ $? = 0 ];then
 	echo  "Install Mongo DB & Start Service."
-	yum install -y mongodb-org >/dev/null
+	yum install -y mongodb-org >>$LOG
 	if [ $? = 0 ]; then
 		echo "Enabling mongodb default startup"
 		systemctl enable mongod >/dev/null && systemctl start mongod >/dev/null
@@ -25,8 +32,8 @@ fi
 echo "Update Listener IP address from 127.0.0.1 to 0.0.0.0 in config file : /etc/mongod.conf"
 ##Config file: /etc/mongod.conf
 
-sed -i -e 's/127.0.0.1/0.0.0.0/g' /etc/mongod.conf
-if [ $? = 0 ];then
+sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf
+if [ $? = 0 ]; then
 	  echo "Restarting mongodb services"
 	  systemctl restart mongod
 fi
@@ -34,6 +41,6 @@ fi
 echo "Download the mongodb schema and load it"
 
 curl -s -L -o /tmp/mongodb.zip "https://github.com/roboshop-devops-project/mongodb/archive/main.zip"
-if [ $? = 0 ];then
-	  cd /tmp && unzip -o mongodb.zip && cd mongodb-main && mongo < catalogue.js && mongo < users.js
+if [ $? = 0 ]; then
+	  cd /tmp && unzip -o mongodb.zip >>$LOG && cd mongodb-main && mongo < catalogue.js >>$LOG && mongo < users.js >>$LOG
 fi
